@@ -6,6 +6,7 @@
 NPReg <- function(d, h, kern="triangular", order=1, se.method="nn", J=3) {
     if (!is.function(kern))
         kern <- EqKern(kern, boundary=FALSE, order=0)
+
     ## Keep only positive kernel weights
     X <- drop(d$X)
     W <- if (h<=0) 0*X else kern(X/h)*d$w # kernel weights
@@ -19,8 +20,18 @@ NPReg <- function(d, h, kern="triangular", order=1, se.method="nn", J=3) {
         colnames(ZZ) <- c(paste0("I(", colnames(d$X), ">0)"),
                           paste0(paste0("I(", colnames(d$X), ">0):"),
                                  colnames(Z))[-1])
+
+        # Check that all of the columns of d$covs have variance within the
+        # bandwidth. If not, the coefficient on that variable will not be
+        # identified and is dropped.
+        if ('covs' %in% names(d)) {
+          colvars <- vapply(1:dim(d$covs)[2L], function(x) var(d$covs[W > 0, x]), 4.4)
+          d$covs <- d$covs[, which(colvars > 0)]
+        }
+
         Z <- cbind(ZZ, Z, d$covs)
     }
+
     r0 <- stats::lm.wfit(x=Z, y=d$Y, w=W)
     class(r0) <- c(if (ncol(d$Y)>1) "mlm", "lm")
     if (any(is.na(r0$coefficients))) {
