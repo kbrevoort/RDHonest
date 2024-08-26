@@ -1,4 +1,4 @@
-[![R-CMD-check](https://github.com/kolesarm/RDHonest/workflows/R-CMD-check/badge.svg)](https://github.com/kolesarm/RDHonest/actions) [![Coverage status](https://codecov.io/gh/kolesarm/RDHonest/branch/master/graph/badge.svg)](https://app.codecov.io/github/kolesarm/RDHonest?branch=master) [![CRAN_Status_Badge](http://www.r-pkg.org/badges/version/RDHonest)](https://cran.r-project.org/package=RDHonest)
+[![R-CMD-check](https://github.com/kolesarm/RDHonest/workflows/R-CMD-check/badge.svg)](https://github.com/kolesarm/RDHonest/actions) [![Coverage status](https://codecov.io/gh/kolesarm/RDHonest/branch/master/graph/badge.svg)](https://app.codecov.io/github/kolesarm/RDHonest?branch=master) [![CRAN_Status_Badge](https://www.r-pkg.org/badges/version/RDHonest)](https://cran.r-project.org/package=RDHonest) [![Download statistics](https://cranlogs.r-pkg.org/badges/RDHonest)](https://cran.r-project.org/package=RDHonest)
 
 # RDHonest
 
@@ -23,7 +23,7 @@ Foundation under grant numbers SES-1628939 (Armstrong) and SES-1628878
 
 ## Installation
 
-You can install the released version of `ebci` from
+You can install the released version of `RDHonest` from
 [CRAN](https://CRAN.R-project.org/package=RDHonest) with:
 
 ``` r
